@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+		<div id="loading">
+			<div class="progress"><div class="progressbar"></div></div>
+		</div>
+
+		<script src="./three.js"></script>
+		<script type="text/javascript" src="dat.js"></script>
+		<script>
+
+			const canvas = document.querySelector('#c');
+			const renderer = new THREE.WebGLRenderer({canvas});
+
+			const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 5);
+			camera.position.z = 2;
+
+			const scene = new THREE.Scene();
+
+			const geometry = new THREE.BoxGeometry();
+
+			const cubes = [];
+			const loadManager = new THREE.LoadingManager();
+			const loader = new THREE.TextureLoader();
+
+			const loadingElem = document.querySelector('#loading');
+			const progressBarElem = loadingElem.querySelector('.progressbar');
+			
+			loadManager.onLoad = () => {
+			loadingElem.style.display = 'none';
+			const cube = new THREE.Mesh(geometry, materials);
+			scene.add(cube);
+			cubes.push(cube);  // 회전 애니메이션을 위해 배열에 추가
+			};
+			
+			loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => { // 마지막으로 불러온 자원의 URL, 현재까지 불러온 자원의 수, 총 지원의 수
+			const progress = itemsLoaded / itemsTotal;
+			progressBarElem.style.transform = `scaleX(${progress})`;
+			};
+
+			const material = new THREE.MeshBasicMaterial({
+				map: loader.load('https://threejsfundamentals.org/threejs/resources/images/wall.jpg'),
+			});
+
+			const cube = new THREE.Mesh(geometry, material);
+			scene.add(cube);
+			cubes.push(cube);
+
+			function resizeRendererToDisplaySize(renderer) {
+				const canvas = renderer.domElement;
+				const width = canvas.clientWidth;
+				const height = canvas.clientHeight;
+				const needResize = canvas.width !== width || canvas.height !== height;
+				if (needResize) {
+				renderer.setSize(width, height, false);
+				}
+				return needResize;
+			}
+			function render(time) {
+				time *= 0.001;
+
+				if (resizeRendererToDisplaySize(renderer)) {
+				const canvas = renderer.domElement;
+				camera.aspect = canvas.clientWidth / canvas.clientHeight;
+				camera.updateProjectionMatrix();
+				}
+
+				cubes.forEach((cube, ndx) => {
+				const speed = .2 + ndx * .1;
+				const rot = time * speed;
+				cube.rotation.x = rot;
+				cube.rotation.y = rot;
+				});
+
+				renderer.render(scene, camera);
+
+				requestAnimationFrame(render);
+			}
+			requestAnimationFrame(render);
+		</script>
+		<script src="progress.js"></script>
+	</body>
+</html>

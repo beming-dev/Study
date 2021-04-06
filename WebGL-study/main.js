@@ -1,0 +1,189 @@
+let canvas = document.querySelector("#c");
+
+let gl = canvas.getContext("webgl");
+if(!gl){
+    alert("no WebGL");
+}
+
+const vertexShaderSource = `
+attribute vec4 a_position;
+void main() {
+  gl_Position = a_position;
+}
+`
+
+const fragmentShaderSource = `
+precision mediump float;
+ 
+void main() {
+  gl_FragColor = vec4(1, 0, 0.5, 1); // 붉은 보라색 반환
+}
+`
+
+function createShader(gl, type, source) {
+    let shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+   
+    let success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+    if (success) {
+      return shader;
+    }
+   
+    console.log(gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+  }
+
+  let vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+let fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+function createProgram(gl, vertexShader, fragmentShader) {
+    var program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+   
+    let success = gl.getProgramParameter(program, gl.LINK_STATUS);
+    if (success) {
+      return program;
+    }
+   
+    console.log(gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
+  }
+  
+  //호출
+  let program = createProgram(gl, vertexShader, fragmentShader);
+
+  //attribute 위치 찾기
+let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+//buffer생성
+let positionBuffer = gl.createBuffer();
+
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+let positions = [
+    0, 0,
+    0, 0.5,
+  	0.7, 0,
+];
+gl.bufferData(
+  gl.ARRAY_BUFFER,
+  new Float32Array(positions),
+  gl.STATIC_DRAW
+);
+
+gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+gl.useProgram(program);
+
+
+//attribute 활성화
+gl.enableVertexAttribArray(positionAttributeLocation);
+
+let size = 2;          // 반복마다 2개의 컴포넌트
+let type = gl.FLOAT;   // 데이터는 32bit 부동 소수점
+let normalize = false; // 데이터 정규화 안 함
+let stride = 0;        // 0 = 다음 위치를 얻기 위해 반복마다 size * sizeof(type) 만큼 앞으로 이동
+let offset = 0;        // Buffer의 처음부터 시작
+gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
+
+let primitiveType = gl.TRIANGLES;
+let count = 3;
+gl.drawArrays(primitiveType, offset, count);
+// let canvas = document.querySelector("#c");
+
+// let gl = canvas.getContext("webgl");
+// if(!gl){
+//     alert("no WebGL");
+// }
+
+// const vertexShaderSource = `
+// attribute vec4 a_position;
+// void main() {
+//   gl_Position = a_position;
+// }
+// `
+
+// const fragmentShaderSource = `
+// precision mediump float;
+ 
+// void main() {
+//   gl_FragColor = vec4(1, 0, 0.5, 1); // 붉은 보라색 반환
+// }
+// `
+
+// function createShader(gl, type, source) {
+//     let shader = gl.createShader(type);
+//     gl.shaderSource(shader, source);
+//     gl.compileShader(shader);
+
+//     let success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+//     if (success) {
+//         return shader;
+//     }
+
+//     console.log(gl.getShaderInfoLog(shader));
+//     gl.deleteShader(shader);
+// }
+
+// let vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+// let fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+// function createProgram(gl, vertexShader, fragmentShader) {
+//     let program = gl.createProgram();
+//     gl.attachShader(program, vertexShader);
+//     gl.attachShader(program, fragmentShader);
+//     gl.linkProgram(program);
+
+//     let success = gl.getProgramParameter(program, gl.LINK_STATUS);
+//     if (success) {
+//         return program;
+//     }
+
+//     console.log(gl.getProgramInfoLog(program));
+//     gl.deleteProgram(program);
+// }
+
+// let program = createProgram(gl, vertexShader, fragmentShader);
+
+// let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+
+// let positionBuffer = gl.createBuffer();
+
+// gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+// let positions = [
+//     0, 0,
+//     0, 0.5,
+//     0.7, 0,
+// ];
+
+// gl.bufferData(
+//     gl.ARRAY_BUFFER,
+//     new Float32Array(positions),
+//     gl.STATIC_DRAW
+// )
+
+// gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+// // gl.clearColor(0, 0, 0, 0);
+// // gl.clear(gl.COLOR_BUFFER_BIT);
+
+// gl.useProgram(program);
+
+// gl.enableVertexAttribArray(positionAttributeLocation);
+
+// // gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+// let size=2;
+// let type=gl.FLOAT;
+// let normalize = false;
+// let stride = 0;
+// var offset = 0;
+// gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
+
+// let primitiveType = gl.TRIANGLES;
+// var offset = 0;
+// let count = 3;
+// gl.drawArrays(primitiveType, offset, count);

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			html, body{
+				margin: 0;
+				height: 100%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<canvas id="c"></canvas>
+
+		<script src="https://unpkg.com/three@0.85.0/build/three.min.js"></script>
+		<script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
+		<script>
+			const canvas = document.querySelector('#c');
+			const renderer = new THREE.WebGLRenderer({canvas});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+			let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+			camera.position.set(0, 10, 50); //카메라 위치 이동, default로 아래쪽 바라봄.
+
+			const controls = new THREE.OrbitControls(camera, canvas);
+			controls.target.set(0, 5, 0);
+			controls.update();
+
+
+
+			const scene = new THREE.Scene();
+
+			const planeSize = 40;
+ 
+			const loader = new THREE.TextureLoader();
+			const texture = loader.load('resource/images/checker.png');
+			texture.wrapS = THREE.RepeatWrapping;
+			texture.wrapT = THREE.RepeatWrapping;
+			texture.magFilter = THREE.NearestFilter;
+			const repeats = planeSize / 2;
+			texture.repeat.set(repeats, repeats);
+
+			const planeGeo = new THREE.PlaneGeometry(planeSize, planeSize);
+			const planeMat = new THREE.MeshPhongMaterial({
+				map: texture,
+				side: THREE.DoubleSide,
+			});
+			const mesh = new THREE.Mesh(planeGeo, planeMat);
+			mesh.rotation.x = Math.PI * -.5;
+			scene.add(mesh);
+
+			{
+				const cubeSize = 4;
+				const cubeGeo = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+				const cubeMat = new THREE.MeshPhongMaterial({color: '#8AC'});
+				const mesh = new THREE.Mesh(cubeGeo, cubeMat);
+				mesh.position.set(cubeSize + 1, cubeSize / 2, 0);
+				scene.add(mesh);
+			}
+
+			{
+				const sphereRadius = 3;
+				const sphereWidthDivisions = 32;
+				const sphereHeightDivisions = 16;
+				const sphereGeo = new THREE.SphereGeometry(sphereRadius, sphereWidthDivisions, sphereHeightDivisions);
+				const sphereMat = new THREE.MeshPhongMaterial({color: '#CA8'});
+				const mesh = new THREE.Mesh(sphereGeo, sphereMat);
+				mesh.position.set(-sphereRadius, sphereRadius + 2, 0);
+				scene.add(mesh);
+			}
+
+			{
+				const color = 0xFFFFFF;
+				const intensity = 1;
+				const light = new THREE.DirectionalLight(color, intensity);
+				light.position.set(-1, 2, 4);
+				scene.add(light);
+			}
+
+			function render(time) {
+				
+				renderer.render(scene, camera);
+				
+				requestAnimationFrame(render);
+			}
+			requestAnimationFrame(render);
+
+		</script>
+	</body>
+</html>
