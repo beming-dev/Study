@@ -24,10 +24,10 @@ function resize(){
     width = window.innerWidth;
     height = window.innerHeight;
 
-    ctx.scale(pixelRatio, pixelRatio);
-
     canvas.width = width * pixelRatio;
     canvas.height = height * pixelRatio;
+
+    ctx.scale(pixelRatio, pixelRatio);
 }
 
 function animate(){
