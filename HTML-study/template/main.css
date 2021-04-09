@@ -28,6 +28,7 @@ body{
 li{
 list-style: none;
 }
+
 a{
     text-decoration: none;
     color: white;
@@ -46,7 +47,6 @@ a{
 
 @keyframes slide{
     from{
-        position: absolute;
         height:100%;
     }
     to{
