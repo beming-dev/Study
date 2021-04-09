@@ -13,6 +13,9 @@ let mouseX;
 let mouseY;
 window.addEventListener('mousemove', onMove);
 
+let realX = 0;
+let realY = 0;
+
 resize();
 
 window.requestAnimationFrame(animate);
@@ -30,11 +33,14 @@ function resize(){
 function animate(){
     window.requestAnimationFrame(animate);
 
+    realX += (mouseX - realX) * 0.12 || 0;
+    realY += (mouseY - realY) * 0.12 || 0;
+
     ctx.clearRect(0, 0, width, height);
 
     ctx.fillStyle = '#D21F3C';
     ctx.beginPath();
-    ctx.arc(mouseX, mouseY, 5, 0, Math.PI*2);
+    ctx.arc(realX, realY, 5, 0, Math.PI*2);
     ctx.fill();
 }
 
