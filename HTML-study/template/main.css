@@ -69,6 +69,11 @@ a{
     from{
         height:100%;
     }
+
+    20%{
+        height: 100%;
+    }
+
     to{
         height:200px;
     }
