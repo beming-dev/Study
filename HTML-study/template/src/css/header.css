@@ -46,7 +46,7 @@ canvas{
 }
 
 li{
-list-style: none;
+    list-style: none;
 }
 
 a{
@@ -60,23 +60,8 @@ a{
     background: var(--webkit-gradient);/* Chrome 10-25, Safari 5.1-6 */
     background: var(--main-gradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     animation-duration: 2s;
-    animation-name: slide;
     display: flex;
     justify-content: center;
-}
-
-@keyframes slide{
-    from{
-        height:100%;
-    }
-
-    20%{
-        height: 100%;
-    }
-
-    to{
-        height:200px;
-    }
 }
 
 .header .title{
@@ -114,112 +99,4 @@ a{
 .body{
     min-height: 500px;
     margin-top: 100px;
-}
-
-.body .image{
-    width: 45%;
-    max-width: 500px;
-    height: fit-content;
-}
-
-.body .part{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 440px;
-    padding: 0 20px;
-    box-sizing: border-box
-}
-
-.body .part p{
-    width: 45%;
-    max-width: 800px;
-    font-size: 18px;
-    color: #f1f3f5;
-}
-
-.body .p2{
-    display: flex;
-}
-
-.footer{
-    /* background: #FF8DA1; */
-    background: linear-gradient(to right, #ee9ca7, #ffdde1);
-    width: 100%;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer .icons{
-    margin-bottom: 15px;
-}
-
-.footer .icons i{
-    font-size: 30px;
-    margin: 0 5px;
-}
-
-.footer .info{
-    margin-bottom: 5px;
-}
-
-.footer .info a{
-    margin: 0 5px;
-}
-
-.footer .explain{
-    margin-bottom: 5px;
-}
-
-.footer .copyright{
-    
-}
-
-
-
-
-
-
-
-@media(max-width: 1250px){
-    .body .image{
-        width: 55%;
-    }
-    .body .part p{
-        width: 35%;
-    }
-}
-
-@media(max-width:800px){
-    .body .part{
-        flex-direction: column;
-        margin: 50px auto;
-    }
-
-    .body .part2{
-        flex-direction: column-reverse;
-    }
-
-    .body .image{
-        width: 60%;
-    }
-    .body .part p{
-        width: 50%;
-    }
-}
-
-@media(max-width:500px){
-    .header .title{
-        font-size: 90px;
-    }
-    .body .image{
-        width: 80%;
-    }
-    .body .part p{
-        width: 70%;
-    }
 }
