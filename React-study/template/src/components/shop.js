@@ -1,40 +1,23 @@
 import React from 'react';
+import '../css/shop.css';
 
-class Body extends React.Component{
-    render(){
+import Header from './header.js'
+import Footer from './footer.js'
+import Nav from './nav.js'
+import Body from './body_shop.js'
+
+
+class Shop extends React.Component{
+    render() { 
         return (
-            <div class="body">
-                <a class="item" href="#">
-                    <img src="images/stock.jpg" alt="" class="image"/>
-                    <div class="right">
-                        <div class="name">Stock</div>
-                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est asperiores modi saepe architecto numquam? Sequi ut ratione nostrum a inventore, error modi dignissimos exercitationem eum eligendi beatae esse eaque quibusdam!</div>
-                    </div>
-                </a>
-                <a class="item" href="#">
-                    <img src="images/stock.jpg" alt="" class="image"/>
-                    <div class="right">
-                        <div class="name">Stock</div>
-                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est asperiores modi saepe architecto numquam? Sequi ut ratione nostrum a inventore, error modi dignissimos exercitationem eum eligendi beatae esse eaque quibusdam!</div>
-                    </div>
-                </a>
-                <a class="item" href="#">
-                    <img src="images/stock.jpg" alt="" class="image"/>
-                    <div class="right">
-                        <div class="name">Stock</div>
-                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est asperiores modi saepe architecto numquam? Sequi ut ratione nostrum a inventore, error modi dignissimos exercitationem eum eligendi beatae esse eaque quibusdam!</div>
-                    </div>
-                </a>
-                <a class="item" href="#">
-                    <img src="images/stock.jpg" alt="" class="image"/>
-                    <div class="right">
-                        <div class="name">Stock</div>
-                        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est asperiores modi saepe architecto numquam? Sequi ut ratione nostrum a inventore, error modi dignissimos exercitationem eum eligendi beatae esse eaque quibusdam!</div>
-                    </div>
-                </a>
+            <div className="container">
+                <Header/>
+                <Nav/>
+                <Body/>
+                <Footer/>
             </div>
         )
     }
 }
 
-export default Body
+export default Shop;
