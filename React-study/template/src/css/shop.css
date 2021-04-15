@@ -1,4 +1,4 @@
-.body .item{
+.shop .body .item{
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
@@ -6,11 +6,11 @@
     margin-bottom: 100px;
 }
 
-.body .item .image{
+.shop .body .item .image{
     width: 30%;
 }
 
-.body .item .right{
+.shop .body .item .right{
     width: 65%;
     min-height: 100%;
     margin-left: 5%;
@@ -20,14 +20,14 @@
     border-bottom: 1px solid pink;
 }
 
-.body .item .name{
+.shop .body .item .name{
     font-size: 25px;
     text-align: center;
     color: white;
     margin-top: 10px;
 }
 
-.body .item .description{
+.shop .body .item .description{
     color: white;
     justify-self: center;
     height: fit-content;
@@ -36,18 +36,18 @@
 }
 
 @media (max-width:800px){
-    .body .item{
+    .shop .body .item{
         width: 80%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .body .item .image{
+    .shop .body .item .image{
         width: 90%;
     }
 
-    .body .item .right{
+    .shop .body .item .right{
         width: 90%;
         margin-left: 0;
         

@@ -9,7 +9,7 @@ import Body from './body_about.js'
 class About extends React.Component{
     render() { 
         return (
-            <div className="container">
+            <div className="blog">
                 <Header/>
                 <Nav/>
                 <Body/>

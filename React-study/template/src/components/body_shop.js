@@ -4,7 +4,7 @@ class Body extends React.Component{
     render(){
         return (
             <div class="body">
-                <a class="item" href="#">
+                <a class="item" href="shop/buy">
                     <img src="images/stock.jpg" alt="" class="image"/>
                     <div class="right">
                         <div class="name">Stock</div>

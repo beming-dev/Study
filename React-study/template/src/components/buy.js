@@ -1,16 +1,15 @@
 import React from 'react';
-import '../css/shop.css';
+import '../css/buy.css';
 
 import Header from './header.js'
 import Footer from './footer.js'
 import Nav from './nav.js'
-import Body from './body_shop.js'
+import Body from './body_buy.js'
 
-
-class Shop extends React.Component{
+class Buy extends React.Component{
     render() { 
         return (
-            <div className="shop">
+            <div className="buy">
                 <Header/>
                 <Nav/>
                 <Body/>
@@ -20,4 +19,4 @@ class Shop extends React.Component{
     }
 }
 
-export default Shop;
+export default Buy;

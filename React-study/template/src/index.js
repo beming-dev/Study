@@ -9,6 +9,7 @@ import Home from './components/home.js'
 import Shop from './components/shop.js'
 import News from './components/news.js'
 import About from './components/about.js'
+import Buy from './components/buy.js'
 
 
 class Index extends React.Component{
@@ -21,6 +22,7 @@ class Index extends React.Component{
                 <Route path="/news" component={News} exact/>
                 <Route path="/blog" component={About} exact/>
                 <Route path="/about" component={About} exact/>
+                <Route path="/shop/buy" component={Buy} exact/>
             </BrowserRouter>
         )
     }

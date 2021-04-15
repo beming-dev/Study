@@ -18,7 +18,7 @@ class Header extends React.Component{
         const {username} = this.state;
         return (
             <div className="header">
-                <a href="./home" className="title">{username ? `PinkyWay ${username}` : 'PinkyWay'}</a>
+                <a href="/home" className="title">{username ? `PinkyWay ${username}` : 'PinkyWay'}</a>
             </div>
         )
     }
