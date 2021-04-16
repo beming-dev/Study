@@ -38,7 +38,7 @@ function animate(){
 
     ctx.clearRect(0, 0, width, height);
 
-    ctx.fillStyle = '#FBCCD1';
+    ctx.fillStyle = '#EB3232';
     ctx.beginPath();
     ctx.arc(realX, realY, 7, 0, Math.PI*2);
     ctx.fill();

@@ -1,5 +1,11 @@
 import React from 'react';
 
+function onLoginButtonClick(){
+    const loginBody = document.querySelector('.login-body');
+    loginBody.style.display="flex";
+
+}
+
 class Header extends React.Component{
     constructor(props){
         super(props);
@@ -20,7 +26,7 @@ class Header extends React.Component{
             <div className="header">
                 <a href="/home" className="title">{username ? `PinkyWay ${username}` : 'PinkyWay'}</a>
                 <div className="login-box">
-                    <button className="login" onClick={()=>{window.location.href='/login'}}>login</button>
+                    <button className="login" onClick={onLoginButtonClick}>login</button>
                     <button className="register" onClick={()=>{window.location.href='/register'}}>register</button>
                 </div>
             </div>

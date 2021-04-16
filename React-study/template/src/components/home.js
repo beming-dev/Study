@@ -5,6 +5,7 @@ import Header from './header.js'
 import Footer from './footer.js'
 import Nav from './nav.js'
 import Body from './body_home.js'
+import Login from './login.js'
 
 class Home extends React.Component{
     render() { 
@@ -14,6 +15,7 @@ class Home extends React.Component{
                 <Nav/>
                 <Body/>
                 <Footer/>
+                <Login/>
             </div>
         )
     }
