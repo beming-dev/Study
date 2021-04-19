@@ -4,13 +4,13 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import './css/header.css';
 import './css/footer.css';
 
-import Enter from './components/main.js'
-import Home from './components/home.js'
-import Shop from './components/shop.js'
-import News from './components/news.js'
-import About from './components/about.js'
-import Buy from './components/buy.js'
-import Register from './components/register.js'
+import Enter from './components/Main'
+import Home from './components/Home'
+import Shop from './components/Shop'
+import News from './components/News'
+import About from './components/About'
+import Buy from './components/Buy'
+import Register from './components/Register'
 
 
 class Index extends React.Component{

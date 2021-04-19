@@ -1,11 +1,11 @@
 import React from 'react';
 import '../css/home.css';
 
-import Header from './header.js'
-import Footer from './footer.js'
-import Nav from './nav.js'
-import Body from './body_home.js'
-import Login from './login.js'
+import Header from './Header'
+import Footer from './Footer'
+import Nav from './Nav'
+import Body from './Body_home'
+import Login from './Login'
 
 class Home extends React.Component{
     render() { 

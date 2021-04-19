@@ -1,10 +1,10 @@
 import React from 'react'
 import '../css/news.css'
 
-import Header from './header.js'
-import Footer from './footer.js'
-import Nav from './nav.js'
-import Body from './body_news.js'
+import Header from './Header'
+import Footer from './Footer'
+import Nav from './Nav'
+import Body from './Body_news'
 
 class News extends React.Component{
     render() { 
