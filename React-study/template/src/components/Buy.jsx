@@ -12,7 +12,7 @@ class Buy extends React.Component{
             <div className="buy">
                 <Header/>
                 <Nav/>
-                <Body/>
+                <Body id={this.props.match.params.id}/>
                 <Footer/>
             </div>
         )

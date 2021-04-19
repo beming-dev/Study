@@ -1,13 +1,14 @@
 :root{
     --webkit-gradient:-webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
     --main-gradient: linear-gradient(to right, #ffdde1, #ee9ca7);
-    --nav-height: 50px
+    --nav-height: 50px;
+    --main-pink: #ee9ca7;
 }
 
 html{
     width: 100%;
     height: 100%;
-    background: #ee9ca7;
+    background: var(--main-pink);
     font-family: 'Raleway', 'Gothic A1', sans-serif;
 }
 

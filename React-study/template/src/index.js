@@ -23,7 +23,7 @@ class Index extends React.Component{
                 <Route path="/news" component={News} exact/>
                 <Route path="/blog" component={About} exact/>
                 <Route path="/about" component={About} exact/>
-                <Route path="/shop/buy" component={Buy} exact/>
+                <Route path="/shop/buy/:id" component={Buy} exact/>
                 <Route path="/register" component={Register} exact/>
             </BrowserRouter>
         )

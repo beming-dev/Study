@@ -24,7 +24,7 @@ class Body extends React.Component {
             <Item 
             key={item.id}
             id={item.id}
-            price={item.name}
+            price={item.price}
             description={item.description}
             name={item.name}
             image={item.image}
